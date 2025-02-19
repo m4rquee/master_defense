@@ -1,0 +1,170 @@
+\documentclass[handout, xcolor=table]{beamer}
+%\documentclass[xcolor=table]{beamer}
+
+%-----------------------[ Macros ]----------------------------------------------%
+
+\input{macros}
+
+\newcounter{finalframe}
+\newcommand{\stopcounter}{
+  \setcounter{finalframe}{\insertframenumber}
+}
+
+\newcommand{\resumecounter}{
+  \setcounter{framenumber}{\value{finalframe}}
+}
+
+\newcommand{\inccounter}{
+  \setcounter{framenumber}{\value{finalframe} + 1}
+}
+
+%-----------------------[ Template ]-------------------------------------------%
+
+\mode<presentation> {
+    \usetheme[sectionpage=none, progressbar=frametitle, block=fill]{moloch} % modern fork of the metropolis theme
+    \setbeamertemplate{footline}[frame number] % to replace the footer line in all slides with a simple slide count
+}
+\setbeamerfont{footnote}{size=\tiny}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footnote}{%
+    \hangpara{2em}{1}%
+    \makebox[2em][l]{\tiny\insertfootnotemark}%
+    \hspace{-1em}\tiny\insertfootnotetext\par\vspace{0.2cm}%
+}
+
+%-----------------------[ (Sub)Section Slides ]--------------------------------%
+
+% \AtBeginSection[]{
+%     \begin{frame}
+%     \vfill
+%     \centering
+%     \begin{beamercolorbox}[sep=8pt,center,shadow=true]{title}
+%         \usebeamerfont{title}\insertsectionhead\par%
+%     \end{beamercolorbox}
+%     \vfill
+%     \end{frame}
+% }
+
+\makeatletter
+\AtBeginSubsection[]{%
+\begin{frame}
+    \setbeamercolor{title}{bg=mDarkTeal,fg=black!2}
+  \centering
+  \begin{minipage}{22em}
+    \raggedright
+    \begin{beamercolorbox}[sep=8pt,center,shadow=true]{title}
+        \usebeamerfont{title}\insertsectionhead\par%
+    \end{beamercolorbox}
+    \usebeamertemplate*{progress bar in section page}
+    \par
+    \ifx\insertsubsectionhead\@empty\else%
+      \vskip-.6\baselineskip
+      \usebeamercolor[fg]{subsection title}%
+      \usebeamerfont{subsection title}%
+      \insertsubsectionhead{}
+    \fi
+  \end{minipage}
+  \par
+  \vspace{\baselineskip}
+\end{frame}
+}
+\makeatother
+
+\makeatletter
+\AtBeginSubsubsection[]{%
+\begin{frame}
+  \centering
+  \begin{minipage}{22em}
+    \raggedright
+    \usebeamercolor[fg]{section title}
+    \usebeamerfont{section title}
+    \insertsubsectionhead{}\\[-1ex]
+    \usebeamertemplate*{progress bar in section page}
+    \par
+    \ifx\insertsubsectionhead\@empty\else%
+      \vskip-.6\baselineskip
+      \usebeamercolor[fg]{subsection title}%
+      \usebeamerfont{subsection title}%
+      \insertsubsubsectionhead
+    \fi
+  \end{minipage}
+  \par
+  \vspace{\baselineskip}
+\end{frame}
+}
+\makeatother
+
+%-----------------------[ Title page ]-----------------------------------------%
+
+\title{
+  Algoritmos para o Freeze-Tag e Problemas de Robótica de Enxame Relacionados%
+  \texorpdfstring{\footnote{Financiado pela Fundação de Amparo à Pesquisa do
+  Estado de São Paulo~(FAPESP) processo \mbox{\#2022/13435-4}}}{}
+}
+
+\titlegraphic{
+  \includegraphics[height=0.8cm]{logos/loco.png}
+  \hspace{4.25cm}
+  \includegraphics[height=1cm]{logos/ic.png}
+}
+
+\author{
+  Aluno: Lucas de Oliveira Silva\texorpdfstring{\\}{}
+  Orientador: Lehilton Lelis Chaves Pedrosa
+}
+
+\institute{Instituto de Computação, Unicamp}
+
+\date{10 de Março de 2025}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\setcounter{tocdepth}{3}
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+%------------------------------------------------------------------------------%
+
+\section{Problemas Estudados}
+
+\subsection{Freeze-Tag Problem}
+\input{1-ftp}
+
+\subsection{Angular Freeze-Tag Problem}
+\input{2-aftp}
+
+\subsection{Minimum Scan Cover}
+\input{3-msc}
+
+\section{Trabalhos Futuros}
+\input{4-future}
+
+\begin{frame}
+  \large{\centerline{Obrigado a todos pela atenção...}}
+  \pause
+  \Huge{\centerline{Fim}}
+\end{frame}
+
+%-----------------------[ Bibliography ]---------------------------------------%
+
+\appendix
+
+\setbeamertemplate{bibliography item}[text]
+\begin{frame}[allowframebreaks]
+  \frametitle{Referências}
+  {
+    \tiny
+    \bibliographystyle{alpha}
+    \bibliography{bibliography}
+  }
+\end{frame}
+
+%-----------------------[ Backup ]---------------------------------------------%
+
+
+\end{document}

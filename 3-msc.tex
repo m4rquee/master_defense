@@ -1,0 +1,173 @@
+%------------------------------------------------------------------------------%
+
+\subsubsection{Contexto}
+
+\begin{frame}{Origem}
+  O Minimum Scan Cover (MSC) foi introduzido em 2021~\cite{Fe21} como um problema de comunicação ponto a ponto entre satélites:
+  \bigbreak
+  \begin{minipage}{\linewidth}
+    \centering
+    \only<1>{\includegraphics[height=5cm]{MSC/instance/Temp-0.png}}%
+    \only<2>{\includegraphics[height=5cm]{MSC/instance/Temp-1.png}}%
+    \only<3>{\includegraphics[height=5cm]{MSC/instance/Temp-2.png}}%
+    \only<4>{\includegraphics[height=5cm]{MSC/instance/Temp-3.png}}%
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Motivação}
+  \begin{itemize}[<+->]
+
+    \item É possível usar transmissão direcional e recepção omnidirecional;
+
+    \item Mas exige duas antenas, aumentando custo e complexidade.
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Definição - Instância}
+  \begin{itemize}[<+->]
+
+    \item Conjunto $P = \{p_1, \dots, p_n\}\subseteq \R^d$ de posições distintas;
+
+    \item Grafo $G=(P, E)$ onde $E\subseteq P\times P$.
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Definição - Solução}
+  \textbf{Escalonamento} ${\cals\colon E\to \R^+}$ onde queremos minimizar $\max\limits_{e \in E} \cals(e)$:
+  \begin{minipage}{\linewidth}
+    \centering
+    \vspace*{1cm}
+    \only<1>{\includegraphics[height=4cm]{MSC/solution/Sol-0.png}}%
+    \only<2>{\includegraphics[height=4cm]{MSC/solution/Sol-1.png}}%
+    \only<3>{\includegraphics[height=4cm]{MSC/solution/Sol-2.png}}%
+    \only<4>{\includegraphics[height=4cm]{MSC/solution/Sol-3.png}\bigbreak}
+    \only<4>{$\cals(a)=\cals(b)=0$, $\cals(c)=\cals(d)=\frac{\pi}{4}$ e $\cals(e)=\frac{\pi}{2}$.}
+  \end{minipage}
+\end{frame}
+
+%------------------------------------------------------------------------------%
+
+\subsubsection{Resultados para 1D}
+
+\begin{frame}{Resultado Anterior}
+  \begin{thm}[Fekete et al.~\cite{Fe21}]
+    Mesmo em 1D, para todo $\gamma \geq 1$, uma $\gamma$-aproximação para o MSC implica que $P = NP$.
+  \end{thm}
+\end{frame}
+
+\begin{frame}{Nossos Resultados}
+  \setbeamercolor{block body}{bg=green!35!white}
+  \begin{thm}
+    Existe um algoritmo \FPT para o MSC em 1D, parametrizado pela largura de árvore $k$, que roda em tempo $k^{O(k)} \cdot n$.
+  \end{thm}
+
+  \pause
+  \begin{cor}
+    Existe uma $3$-aproximação para o MSC em 1D em grafos planares, que roda em tempo $O(n^2)$.
+  \end{cor}
+\end{frame}
+
+%------------------------------------------------------------------------------%
+
+\subsubsection{Resultados para 2D}
+
+\begin{frame}{Resultados Anteriores}
+  \begin{thm}[Fekete et al.~\cite{Fe21}]
+    Mesmo em 2D, para todo $\gamma < \nicefrac{3}{2}$, uma $\gamma$-aproximação para o MSC em grafos bipartidos implica que $P = NP$.
+  \end{thm}
+
+  \pause
+  \begin{thm}[Fekete et al.~\cite{Fe21}]
+    Existe uma $\frac{9}{2}$-aproximação para o MSC em 2D em grafos bipartidos.
+  \end{thm}
+\end{frame}
+
+\begin{frame}{Preliminares}
+  \centering
+  Uma instância usando $\ell=8$ direções:
+
+  \bigskip
+  \begin{minipage}{\linewidth}
+    \centering
+    \includegraphics[height=5cm]{MSC/directions.png}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Nossos Resultados}
+  \setbeamercolor{block body}{bg=green!35!white}
+  \begin{thm}
+    Existe um algoritmo \FPT para MSC em 2D, parametrizado pela largura de árvore $k$ e $\ell$, que roda em tempo $k^{O(k \ell \log(\ell))} \cdot n$.
+  \end{thm}
+
+  \pause
+  \begin{cor}
+    Existe uma $3$-aproximação para MSC em 2D em grafos planares parametrizada por $\ell$, que roda em tempo $\ell^{O(\ell)} \cdot n + O(n^2)$.
+  \end{cor}
+\end{frame}
+
+\begin{frame}{Preliminares}
+  \centering
+  Uma instância de ângulo mínimo $\lambda$:
+
+  \bigskip
+  \begin{minipage}{\linewidth}
+    \centering
+    \includegraphics[height=2.5cm]{MSC/lambda.png}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Nosso Resultado}
+  \setbeamercolor{block body}{bg=green!35!white}
+  \begin{thm}
+    Existe uma $2$-aproximação para o MSC em 2D parametrizada pela largura de árvore $k$ e $\lceil \nicefrac{1}{\lambda} \rceil$, que roda em tempo $\lambda^{-O(k^2 + \frac{k \log k}{\lambda})} \cdot (\log k)^{O(k^2)} \cdot n$.
+  \end{thm}
+\end{frame}
+
+\begin{frame}{Rascunho da Prova}
+    \begin{itemize}[<+->]
+        \item Seja $I = (P, G)$ uma instância com ângulo mínimo $\lambda$;
+
+        \item Recebemos uma decomposição em árvore de $G$ com largura $k$;
+
+        \item \emph{WLOG}, considere que $\lambda < \pi$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+    \begin{itemize}[<+->]
+        \item Seja $M := \floor{\nicefrac{\pi}{\lambda}} \geq 1$;
+
+        \item O disco ao redor de cada $p_i\in P$ é dividido em $4M$ \textbf{setores}:
+    \end{itemize}
+    
+    \bigskip
+    \pause
+    \begin{minipage}{\linewidth}
+        \centering
+        \includegraphics[height=4cm]{MSC/angle.png}
+    \end{minipage}
+
+    \bigskip
+    \centering
+    $\theta := \frac{\pi}{2M} < \lambda$ e os setores são $c_j$ para $j = 0, \dots, 4M-1$.
+\end{frame}
+
+\begin{frame}{}
+    Relaxação ${\hat I:=I}$ do problema dependendo de $\theta$:
+    
+    \bigskip
+    \pause
+    \begin{minipage}{\linewidth}
+        \centering
+        \includegraphics[height=5cm]{MSC/discrete.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{Nosso Resultado}
+  \setbeamercolor{block body}{bg=green!35!white}
+  \begin{cor}
+    Existe uma $5$-aproximação para o MSC em 2D em grafos planares parametrizada por $\lceil \nicefrac{1}{\lambda} \rceil$, que roda em tempo $\lambda^{-O(\nicefrac{1}{\lambda})} \cdot n + O(n^2)$.
+  \end{cor}
+\end{frame}
