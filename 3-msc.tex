@@ -17,7 +17,7 @@
 \begin{frame}{Motivação}
   \begin{itemize}[<+->]
 
-    \item É possível usar transmissão direcional e recepção omnidirecional;
+    \item É possível usar tanto transmissão direcional quanto recepção omnidirecional;
 
     \item Mas exige duas antenas, aumentando custo e complexidade.
 
@@ -43,7 +43,7 @@
     \only<2>{\includegraphics[height=4cm]{MSC/solution/Sol-1.png}}%
     \only<3>{\includegraphics[height=4cm]{MSC/solution/Sol-2.png}}%
     \only<4>{\includegraphics[height=4cm]{MSC/solution/Sol-3.png}\bigbreak}
-    \only<4>{$\cals(a)=\cals(b)=0$, $\cals(c)=\cals(d)=\frac{\pi}{4}$ e $\cals(e)=\frac{\pi}{2}$.}
+    \only<4>{$\cals(a)=\cals(b)=0$, $\cals(c)=\cals(d)=\frac{\pi}{4}$ e $\cals(e)=\frac{\pi}{2}$}
   \end{minipage}
 \end{frame}
 
@@ -127,7 +127,7 @@
 
 \begin{frame}{Rascunho da Prova}
     \begin{itemize}[<+->]
-        \item Seja $I = (P, G)$ uma instância com ângulo mínimo $\lambda$;
+        \item Seja $\cali = (P, G)$ uma instância com ângulo mínimo $\lambda$;
 
         \item Recebemos uma decomposição em árvore de $G$ com largura $k$;
 
@@ -151,11 +151,11 @@
 
     \bigskip
     \centering
-    $\theta := \frac{\pi}{2M} < \lambda$ e os setores são $c_j$ para $j = 0, \dots, 4M-1$.
+    $\theta := \frac{\pi}{2M} < \lambda$ e os setores são $c_j$ para $j \in [4M-1]$
 \end{frame}
 
 \begin{frame}{}
-    Relaxação ${\hat I:=I}$ do problema dependendo de $\theta$:
+    Consideramos uma relaxação ${\hat \cali:= \cali}$ dependendo de $\theta$:
     
     \bigskip
     \pause
@@ -163,6 +163,76 @@
         \centering
         \includegraphics[height=5cm]{MSC/discrete.png}
     \end{minipage}
+\end{frame}
+
+\begin{frame}{}
+    \begin{obs}
+        Cada solução ótima $\hat\cals$ de custo $\theta N$ corresponde a uma função \mbox{$\hat h\colon P \to [4M-1]^{N+1}$}.
+    \end{obs}
+\end{frame}
+
+\begin{frame}{}
+    \begin{obs}
+        \label{obs:msc2d}
+        Seja $t^*$ o ótimo de $\cali$. Então, $t^* \leq 3\pi\ceil{\log_2(k+1)}$
+    \end{obs}
+\end{frame}
+
+\begin{frame}{}
+    \centering
+    Pela \ref{obs:msc2d}ª Observação, existe uma solução de $\hat \cali$ com custo $\theta N$, onde:
+    $N \leq 6\floor{\nicefrac{\pi}{\lambda}} \ceil{\log_2(k+1)}$
+\end{frame}
+
+\begin{frame}{}
+    \centering
+    Particionamos o intervalo de tempo $[0,\ \theta (N+1))$:
+
+    \pause
+    \vspace*{2cm}
+    \begin{minipage}{\linewidth}
+        \centering
+        \includegraphics[width=10cm]{MSC/interval.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{}
+    \only<1>{\begin{lem}
+        \label{obs:msc2dptas}
+        Existe uma solução de custo no máximo $\floor{\nicefrac{t^*}{\theta}} \theta$ para $\hat \cali$, que mapeia arestas para pontos em $\{i\cdot \theta\ |\ i \in [N]\}$.
+    \end{lem}}
+
+    \centering 
+    \only<2>{Seja $\cals^*$ uma solução ótima para $\cali$.}
+    \only<3>{Se o ângulo entre $\mathbf{e}$ e $\mathbf{f}$ não é zero, então ele é ao menos $\lambda>\theta$:}
+    \only<4>{Caso contrário, o ângulo entre $\mathbf{e}$ e $\mathbf{f}$ é zero:}
+
+    \begin{minipage}{\linewidth}
+        \vspace*{2cm}
+        \centering
+        \only<3>{\includegraphics[width=10cm]{MSC/lemma/lema_1.png}}%
+        \only<4>{\includegraphics[width=10cm]{MSC/lemma/lema_2.png}}%
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{}
+    \centering
+    Construímos uma solução {\color{red} $\hat \cals$} para $\hat \cali$ a partir de {\color{blue} $\cals^*$}:
+
+    \begin{minipage}{\linewidth}
+        \vspace*{2cm}
+        \centering
+        \only<2>{\includegraphics[width=10cm]{MSC/lemma/lema_3.png}}%
+        \only<3>{\includegraphics[width=10cm]{MSC/lemma/lema_4.png}\qed}%
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{}
+    Usando programação dinâmica sobre a decomposição em árvore calculamos uma solução ótima $\hat \cals^*$ para $\hat\cali$ em tempo:
+
+    \bigskip
+    \centering
+    $N^{O(k^2)}\cdot M^{O(Nk)}\cdot k^{O(1)} \cdot n = \lambda^{-O(k^2+\frac{k\log k}{\lambda})}\cdot (\log k)^{O(k^2)}\cdot n$.
 \end{frame}
 
 \begin{frame}{Nosso Resultado}
