@@ -200,7 +200,7 @@
 
 \begin{frame}{}
     \only<1>{\begin{lem}
-        \label{obs:msc2dptas}
+        \label{lemma:1}
         Existe uma solução de custo no máximo $\floor{\nicefrac{t^*}{\theta}} \theta$ para $\hat \cali$, que mapeia arestas para pontos em $\{i\cdot \theta\ |\ i \in [N]\}$.
     \end{lem}}
 
@@ -255,6 +255,25 @@
         \centering
         \only<1>{\includegraphics[width=10cm]{MSC/final/final_1.png}}%
         \only<3>{\includegraphics[width=10cm]{MSC/final/final_2.png}}%
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{}
+    \centering
+    \only<1,7>{Arestas no mesmo $E^i$ \checkmark}
+    \only<2-6>{$\mathbf{e} \in H^i$ e $\mathbf{f} \in H^j$ onde $i\ne j$:\\\bigskip}
+    \only<5>{\centering Sabemos que $|{\color{red} \hat \cals^*}(e) - {\color{red} \hat \cals^*}(f)|=|i-j|\cdot \theta \ge \phi$}
+    \only<6>{\centering Logo, por definição, $|{\color{blue} \cals}(e) - {\color{blue} \cals}(f)| = 2|i-j| \cdot \theta \ge \phi + \theta$ e ${\color{blue} \cals}$ é válido}
+
+    \only<7>{$\mathbf{e} \in H^i$ e $\mathbf{f} \in H^j$ onde $i\ne j$ \checkmark\\\bigskip}
+    \only<7>{\centering Portanto, pelo \ref{lemma:1}º Lema, o custo é no máximo $2\floor{\nicefrac{t^*}{\theta}}\theta \le 2t^*$ \qed}
+
+    \begin{minipage}{\linewidth}
+        \vspace*{0.5cm}
+        \centering
+        \only<2>{\includegraphics[height=6cm]{MSC/end/end_2.png}}%
+        \only<3>{\includegraphics[height=6cm]{MSC/end/end_3.png}}%
+        \only<4-6>{\includegraphics[height=6cm]{MSC/end/end_4.png}}%
     \end{minipage}
 \end{frame}
 
