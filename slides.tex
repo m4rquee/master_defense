@@ -67,6 +67,18 @@
   \par
   \vspace{\baselineskip}
 \end{frame}
+
+\setcounter{tocdepth}{3}
+\frame<beamer>{ 
+  \frametitle{}
+  \centering
+  \begin{minipage}{20em}
+  \tableofcontents[
+    currentsection,currentsubsection,sectionstyle=show/hide,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/show/hide/shaded
+  ]    
+  \end{minipage}
+  
+}
 }
 \makeatother
 
@@ -123,7 +135,7 @@
   \titlepage
 \end{frame}
 
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{2}
 \begin{frame}{Sumário}
   \tableofcontents
 \end{frame}

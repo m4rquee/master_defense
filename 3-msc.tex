@@ -109,7 +109,7 @@
 
 \begin{frame}{Preliminares}
   \centering
-  Uma instância de ângulo mínimo $\lambda$:
+  Uma instância de ângulo mínimo não nulo $\lambda$:
 
   \bigskip
   \begin{minipage}{\linewidth}
@@ -127,7 +127,7 @@
 
 \begin{frame}{Rascunho da Prova}
     \begin{itemize}[<+->]
-        \item Seja $\cali = (P, G)$ uma instância com ângulo mínimo $\lambda$;
+        \item Seja $\cali = (P, G)$ uma instância de ângulo mínimo não nulo $\lambda$;
 
         \item Recebemos uma decomposição em árvore de $G$ com largura $k$;
 
@@ -167,7 +167,7 @@
 
 \begin{frame}{}
     \begin{obs}
-        Cada solução ótima $\hat\cals$ de custo $\theta N$ corresponde a uma função \mbox{$\hat h\colon P \to [4M-1]^{N+1}$}.
+        Cada solução ótima de custo $\theta N$ corresponde a uma função \mbox{$\hat h\colon P \to [4M-1]^{N+1}$}.
     \end{obs}
 \end{frame}
 
@@ -179,14 +179,16 @@
 \end{frame}
 
 \begin{frame}{}
-    \centering
     Pela \ref{obs:msc2d}ª Observação, existe uma solução de $\hat \cali$ com custo $\theta N$, onde:
-    $N \leq 6\floor{\nicefrac{\pi}{\lambda}} \ceil{\log_2(k+1)}$
+
+    \bigskip
+    \centering
+    $N \leq \frac{3\pi\ceil{\log_2(k+1)}}{\theta} = 6\floor{\nicefrac{\pi}{\lambda}} \ceil{\log_2(k+1)}$
 \end{frame}
 
 \begin{frame}{}
     \centering
-    Particionamos o intervalo de tempo $[0,\ \theta (N+1))$:
+    Particionamos o intervalo de tempo $[0,\ (N+1) \theta)$:
 
     \pause
     \vspace*{2cm}
@@ -203,7 +205,7 @@
     \end{lem}}
 
     \centering 
-    \only<2>{Seja $\cals^*$ uma solução ótima para $\cali$.}
+    \only<2>{Seja {\color{blue} $\cals^*$} uma solução ótima para $\cali$.}
     \only<3>{Se o ângulo entre $\mathbf{e}$ e $\mathbf{f}$ não é zero, então ele é ao menos $\lambda>\theta$:}
     \only<4>{Caso contrário, o ângulo entre $\mathbf{e}$ e $\mathbf{f}$ é zero:}
 
@@ -222,8 +224,8 @@
     \begin{minipage}{\linewidth}
         \vspace*{2cm}
         \centering
-        \only<2>{\includegraphics[width=10cm]{MSC/lemma/lema_3.png}}%
-        \only<3>{\includegraphics[width=10cm]{MSC/lemma/lema_4.png}\qed}%
+        \only<2>{\includegraphics[width=10cm]{MSC/lemma/lema_3.png} \hfill{}\\\phantom{\qed}}%
+        \only<3>{\includegraphics[width=10cm]{MSC/lemma/lema_4.png} \hfill{}\\\qed}%
     \end{minipage}
 \end{frame}
 
@@ -232,7 +234,28 @@
 
     \bigskip
     \centering
-    $N^{O(k^2)}\cdot M^{O(Nk)}\cdot k^{O(1)} \cdot n = \lambda^{-O(k^2+\frac{k\log k}{\lambda})}\cdot (\log k)^{O(k^2)}\cdot n$.
+    $N^{O(k^2)}\cdot M^{O(Nk)}\cdot k^{O(1)} \cdot n = \lambda^{-O(k^2+\frac{k\log k}{\lambda})}\cdot (\log k)^{O(k^2)}\cdot n$
+\end{frame}
+
+\begin{frame}{}
+    \centering
+    \only<1>{Seja {\color{red} $\hat \cals^*$} uma solução ótima para $\hat \cali$:}
+    \only<3>{Construímos uma solução {\color{blue} $\cals$} para $\cali$ a partir de {\color{red} $\hat \cals^*$}:}
+
+    \only<2>{
+        \begin{itemize}
+            \item Se o ângulo entre $\mathbf{e}$ e $\mathbf{f}$ não é zero, então é maior que $\theta$;
+            
+            \item Logo, $|{\color{red} \hat \cals^*}(\mathbf{e})-{\color{red} \hat \cals^*}(\mathbf{f})|> \theta$, e não pertencem ao mesmo $E^i$.
+        \end{itemize}
+    }
+
+    \begin{minipage}{\linewidth}
+        \vspace*{2cm}
+        \centering
+        \only<1>{\includegraphics[width=10cm]{MSC/final/final_1.png}}%
+        \only<3>{\includegraphics[width=10cm]{MSC/final/final_2.png}}%
+    \end{minipage}
 \end{frame}
 
 \begin{frame}{Nosso Resultado}
