@@ -1,4 +1,4 @@
-%\documentclass[handout, xcolor=table]{beamer}
+% \documentclass[handout, xcolor=table]{beamer}
 \documentclass[xcolor=table]{beamer}
 
 %-----------------------[ Macros ]----------------------------------------------%
@@ -46,7 +46,7 @@
 % }
 
 \makeatletter
-\AtBeginSubsection[]{%
+\newcommand{\subseqslide}{
 \begin{frame}
     \setbeamercolor{title}{bg=mDarkTeal,fg=black!2}
   \centering
@@ -67,6 +67,10 @@
   \par
   \vspace{\baselineskip}
 \end{frame}
+}
+
+\AtBeginSubsection[]{%
+\subseqslide
 
 \setcounter{tocdepth}{3}
 \frame<beamer>{ 
@@ -74,7 +78,7 @@
   \centering
   \begin{minipage}{20em}
   \tableofcontents[
-    currentsection,currentsubsection,sectionstyle=show/hide,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/show/hide/shaded
+    currentsection,currentsubsection,sectionstyle=show/hide,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/show/hide/hide
   ]    
   \end{minipage}
   
@@ -135,7 +139,7 @@
   \titlepage
 \end{frame}
 
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 \begin{frame}{Sumário}
   \tableofcontents
 \end{frame}
