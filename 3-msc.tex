@@ -3,7 +3,7 @@
 \subsubsection{Contexto}
 
 \begin{frame}{Origem}
-  O Minimum Scan Cover (MSC) foi introduzido em 2021~\cite{Fe21} como um problema de comunicação ponto a ponto entre satélites:
+  O \textbf{Minimum Scan Cover} (MSC) foi introduzido em 2021~\cite{Fe21} como um problema de comunicação ponto a ponto entre satélites:
   \bigbreak
   \begin{minipage}{\linewidth}
     \centering
@@ -49,7 +49,7 @@
 
 %------------------------------------------------------------------------------%
 
-\subsubsection{Resultados para 1D}
+\subsubsection{Resultados Teóricos para 1D}
 
 \begin{frame}{Resultado Anterior}
   \begin{thm}[Fekete et al.~\cite{Fe21}]
@@ -71,7 +71,7 @@
 
 %------------------------------------------------------------------------------%
 
-\subsubsection{Resultados para 2D}
+\subsubsection{Resultados Teóricos para 2D}
 
 \begin{frame}{Resultados Anteriores}
   \begin{thm}[Fekete et al.~\cite{Fe21}]
@@ -151,7 +151,7 @@
 
     \bigskip
     \centering
-    $\theta := \frac{\pi}{2M} < \lambda$ e os setores são $c_j$ para $j \in [4M-1]$
+    $\theta := \frac{\pi}{2M} < \lambda$ e os setores são $c_j$ para $j \in \{0, \dots, 4M-1 \}=[4M-1]$
 \end{frame}
 
 \begin{frame}{}
@@ -206,14 +206,14 @@
 
     \centering 
     \only<2>{Seja {\color{blue} $\cals^*$} uma solução ótima para $\cali$.}
-    \only<3>{Se o ângulo entre $\mathbf{e}$ e $\mathbf{f}$ não é zero, então ele é ao menos $\lambda>\theta$:}
-    \only<4>{Caso contrário, o ângulo entre $\mathbf{e}$ e $\mathbf{f}$ é zero:}
+    \only<3,4>{Se o ângulo entre $\mathbf{e}$ e $\mathbf{f}$ não é zero, então ele é ao menos $\lambda>\theta$:}
+    \only<5>{Caso contrário, o ângulo entre $\mathbf{e}$ e $\mathbf{f}$ é zero:}
 
     \begin{minipage}{\linewidth}
         \vspace*{2cm}
         \centering
-        \only<3>{\includegraphics[width=10cm]{MSC/lemma/lema_1.png}}%
-        \only<4>{\includegraphics[width=10cm]{MSC/lemma/lema_2.png}}%
+        \only<4>{\includegraphics[width=10cm]{MSC/lemma/lema_1.png}}%
+        \only<5>{\includegraphics[width=10cm]{MSC/lemma/lema_2.png}}%
     \end{minipage}
 \end{frame}
 
@@ -239,35 +239,41 @@
 
 \begin{frame}{}
     \centering
-    \only<1>{Seja {\color{red} $\hat \cals^*$} uma solução ótima para $\hat \cali$:}
-    \only<3>{Construímos uma solução {\color{blue} $\cals$} para $\cali$ a partir de {\color{red} $\hat \cals^*$}:}
-
-    \only<2>{
-        \begin{itemize}
-            \item Se o ângulo entre $\mathbf{e}$ e $\mathbf{f}$ não é zero, então é maior que $\theta$;
-            
-            \item Logo, $|{\color{red} \hat \cals^*}(\mathbf{e})-{\color{red} \hat \cals^*}(\mathbf{f})|> \theta$, e não pertencem ao mesmo $E^i$.
-        \end{itemize}
-    }
+    Seja {\color{red} $\hat \cals^*$} uma solução ótima para $\hat \cali$:
 
     \begin{minipage}{\linewidth}
         \vspace*{2cm}
         \centering
-        \only<1>{\includegraphics[width=10cm]{MSC/final/final_1.png}}%
-        \only<3>{\includegraphics[width=10cm]{MSC/final/final_2.png}}%
+        \includegraphics[width=10cm]{MSC/final/final_1.png}
     \end{minipage}
 \end{frame}
 
 \begin{frame}{}
     \centering
-    \only<1,7>{Arestas no mesmo $E^i$ \checkmark}
-    \only<2-6>{$\mathbf{e} \in H^i$ e $\mathbf{f} \in H^j$ onde $i\ne j$:\\\bigskip}
+    \begin{itemize}[<+->]
+        \item Se o ângulo entre $\mathbf{e}$ e $\mathbf{f}$ não é zero, então é maior que $\theta$;
+        
+        \item Logo, $|{\color{red} \hat \cals^*}(\mathbf{e})-{\color{red} \hat \cals^*}(\mathbf{f})|> \theta$, e não pertencem ao mesmo $E^i$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+    \centering
+    Construímos uma solução {\color{blue} $\cals$} para $\cali$ a partir de {\color{red} $\hat \cals^*$}:
+
+    \begin{minipage}{\linewidth}
+        \vspace*{2cm}
+        \centering
+        \includegraphics[width=10cm]{MSC/final/final_2.png}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{}
+    \centering
+    \only<1>{Arestas no mesmo $E^i$ \checkmark}
+    \only<2-6>{$\mathbf{e} \in E^i$ e $\mathbf{f} \in E^j$ onde $i\ne j$:\\\bigskip}
     \only<5>{\centering Sabemos que $|{\color{red} \hat \cals^*}(e) - {\color{red} \hat \cals^*}(f)|=|i-j|\cdot \theta \ge \phi$}
     \only<6>{\centering Logo, por definição, $|{\color{blue} \cals}(e) - {\color{blue} \cals}(f)| = 2|i-j| \cdot \theta \ge \phi + \theta$}
-
-    \only<7>{$\mathbf{e} \in H^i$ e $\mathbf{f} \in H^j$ onde $i\ne j$ \checkmark\\\bigskip}
-    \only<7>{\centering Então, ${\color{blue} \cals}$ é válido.}
-    \only<8>{\centering Portanto, pelo \ref{lemma:1}º Lema, o custo de ${\color{blue} \cals}$ é no máximo $2\floor{\nicefrac{t^*}{\theta}}\theta \le 2t^*$ \\\qed}
 
     \begin{minipage}{\linewidth}
         \vspace*{0.5cm}
@@ -276,6 +282,18 @@
         \only<3>{\includegraphics[height=6cm]{MSC/end/end_3.png}}%
         \only<4-6>{\includegraphics[height=6cm]{MSC/end/end_4.png}}%
     \end{minipage}
+\end{frame}
+
+\begin{frame}{}
+    \centering
+    Arestas no mesmo $E^i$ \checkmark\\\bigskip
+    $\mathbf{e} \in E^i$ e $\mathbf{f} \in E^j$ onde $i\ne j$ \checkmark\\\bigskip
+    Então, ${\color{blue} \cals}$ é válido.
+\end{frame}
+
+\begin{frame}{}
+    \centering
+    Portanto, pelo \ref{lemma:1}º Lema, o custo de ${\color{blue} \cals}$ é no máximo $2\floor{\nicefrac{t^*}{\theta}}\theta \le 2t^*$ \\\qed
 \end{frame}
 
 \begin{frame}{Nosso Resultado}
