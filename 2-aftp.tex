@@ -8,7 +8,7 @@
   \bigbreak
   \begin{minipage}{\linewidth}
     \centering
-    \colorbox{white}{\multiinclude[format=png, start=0, end=3, graphics={height=4cm}]{AFTP/instance/Temp}}
+    \includegraphics[height=4cm]{AFTP/instance/Temp-0.png}
   \end{minipage}
 \end{frame}
 \inccounter
@@ -20,7 +20,7 @@
 
     \item Grandes distâncias impossibilitam um \emph{broadcast} simultâneo;
 
-    \item O crescimento das constelações de satélites exige protocolos eficientes de transmissão de dados.
+    \item O crescimento das constelações de satélites.
 
   \end{itemize}
 \end{frame}
@@ -45,13 +45,13 @@
   \bigskip
   \begin{minipage}{\linewidth}
     \centering
-    \includegraphics[height=5.5cm]{AFTP/solution.png}
+    \colorbox{white}{\multiinclude[format=png, start=0, end=3, graphics={height=5.5cm}]{AFTP/instance/Temp}}
   \end{minipage}
 \end{frame}
 
 %------------------------------------------------------------------------------%
 
-\subsubsection{Resultados Teóricos}
+\subsubsection{Resultados Anteriores e Novos}
 
 \begin{frame}{Resultados Anteriores}
   \begin{thm}[Fekete e Krupke~\cite{Fe18}]
@@ -72,9 +72,9 @@
   \pause
 
   \begin{thm}
-    Seja $I$ uma instância do AFTP em 2D, $E$ um número real e $k$ um inteiro positivo.
+    Seja $I$ uma instância do AFTP em 2D, $\mathbf{F}$ um número real e $\mathbf{k}$ um inteiro positivo.
     %
-    Então, existe um algoritmo que roda em tempo ${(n\frac{Ek}{\varepsilon})^{O(\frac{Ek}{\varepsilon})}}$ e ou prova que toda solução ótima requer mais de $E$ de energia total, ou encontra uma solução com \emph{makespan} no máximo ${(1+\nicefrac{1}{k})\opt(I)}$.
+    Então, existe um algoritmo que roda em tempo ${(n\frac{Fk}{\varepsilon})^{O(\frac{Fk}{\varepsilon})}}$ e ou prova que toda solução ótima requer mais de $F$ de energia total, ou encontra uma solução com \emph{makespan} no máximo ${(1+\nicefrac{1}{k})\opt(I)}$.
   \end{thm}
 
   \pause

@@ -70,21 +70,21 @@
 \end{frame}
 }
 
-\AtBeginSubsection[]{%
-\subseqslide
+% \AtBeginSubsection[]{%
+% \subseqslide
 
-\setcounter{tocdepth}{3}
-\frame<beamer>{ 
-  \frametitle{}
-  \centering
-  \begin{minipage}{20em}
-  \tableofcontents[
-    currentsection,currentsubsection,sectionstyle=show/hide,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/show/hide/hide
-  ]    
-  \end{minipage}
+% \setcounter{tocdepth}{3}
+% \frame<beamer>{ 
+%   \frametitle{}
+%   \centering
+%   \begin{minipage}{20em}
+%   \tableofcontents[
+%     currentsection,currentsubsection,sectionstyle=show/hide,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/show/hide/hide
+%   ]    
+%   \end{minipage}
   
-}
-}
+% }
+% }
 \makeatother
 
 \makeatletter
@@ -140,7 +140,7 @@
   \titlepage
 \end{frame}
 
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 \begin{frame}{Sumário}
   \tableofcontents
 \end{frame}
@@ -158,8 +158,11 @@
 \subsection{Minimum Scan Cover}
 \input{3-msc}
 
+\section{Publicações Resultantes}
+\input{4-publi}
+
 \section{Trabalhos Futuros}
-\input{4-future}
+\input{5-future}
 
 \begin{frame}
   \large{\centerline{Obrigado a todos pela atenção...}}
